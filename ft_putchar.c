@@ -12,8 +12,11 @@
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(va_list x)
 {
+	char	c;
+
+	c = (char)va_arg(x, int);
 	write(1, &c, 1);
-	return(void);
+	return(1);
 }
