@@ -7,7 +7,14 @@ int ft_printf(const char *str, ...)
     {
         if (str[i] == '%')
         {
-            
+            i++;
+            ft_check();
+            i++;
+        }
+        else
+        {
+            ft_putchar(str[i]);
+            i++;
         }
     }
     
