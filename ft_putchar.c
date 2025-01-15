@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpontici <rpontici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:45:47 by rpontici          #+#    #+#             */
-/*   Updated: 2025/01/15 18:10:38 by rpontici         ###   ########.fr       */
+/*   Updated: 2025/01/15 18:10:48 by rpontici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *s)
+void	ft_putchar(char c)
 {
-	size_t	i;
-
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	write(1, &c, 1);
+	return(void);
 }

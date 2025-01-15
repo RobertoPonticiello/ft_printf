@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpontici <rpontici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 13:45:47 by rpontici          #+#    #+#             */
-/*   Updated: 2025/01/15 18:10:38 by rpontici         ###   ########.fr       */
+/*   Created: 2024/12/20 13:46:42 by rpontici          #+#    #+#             */
+/*   Updated: 2025/01/15 18:10:44 by rpontici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *s)
+void	ft_putnbr(int n)
 {
-	size_t	i;
+	char	c;
 
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i])
+	if (n == -2147483648)
 	{
-		write(1, &s[i], 1);
-		i++;
+		write(1, "-2", 2);
+		write(1, "147483648", 9);
+	}
+	else if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+		ft_putnbr(n);
+	}
+	else if (n <= 9)
+	{
+		c = n + '0';
+		write(1, &c, 1);
+	}
+	else
+	{
+		ft_putnbr(n / 10);
+		c = (n % 10) + '0';
+		write(1, &c, 1);
 	}
 }

@@ -1,3 +1,5 @@
+#include "ft_printf.h"
+
 int ft_printf(const char *str, ...)
 {
     size_t  i;
@@ -8,7 +10,7 @@ int ft_printf(const char *str, ...)
         if (str[i] == '%')
         {
             i++;
-            ft_check();
+            ft_check(str[i]);
             i++;
         }
         else
