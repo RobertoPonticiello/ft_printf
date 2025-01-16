@@ -12,16 +12,19 @@
 
 #include "ft_printf.h"
 
-void	ft_putstr(char *s)
+int	ft_putstr(va_list x)
 {
-	size_t	i;
+	int		i;
+	char	*s;
 
+	i = 0;
+	s = (char *)va_arg(x, int);
 	if (!s)
 		return ;
-	i = 0;
 	while (s[i])
 	{
 		write(1, &s[i], 1);
 		i++;
 	}
+	return(i);
 }
