@@ -16,13 +16,16 @@ int    ft_check(char c, va_list x)
     if (c == 'i')
         count = ft_putnbr(x);
     if (c == 'u')
-        count = ft_putnbr(x); //senza segno
+        count = ft_putnbr_u(x);
     if (c == 'x')
-        /* code */
+        count = ft_puthex_dw(x);
     if (c == 'X')
-        /* code */
+        count = ft_puthex_up(x);
     if (c == '%')
-        count = ft_putchar('%');
+    {
+        count = 1;
+        write(1, '%', 1);
+    }
     return (count);
 }
 
@@ -40,12 +43,12 @@ int ft_printf(const char *str, ...)
         if (str[i] == '%')
         {
             i++;
-            count = ft_check(str[i], args);
+            count += ft_check(str[i], args);
             i++;
         }
         else
         {
-            ft_putchar(str[i]);
+            count += ft_putchar(str[i]);
             i++;
         }
     }

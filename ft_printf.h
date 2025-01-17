@@ -6,8 +6,11 @@
 #include <stdlib.h>
 
 int ft_printf(const char *str, ...);
-void	ft_putchar(char c);
-void	ft_putnbr(int n);
-void	ft_putstr(char *s);
+int	ft_putchar(va_list x);
+int	ft_putnbr(va_list x);
+int ft_putnbr_u(va_list x);
+int	ft_putstr(va_list x);
+int ft_puthex_dw(va_list x);
+int ft_puthex_up(va_list x);
 
 #endif

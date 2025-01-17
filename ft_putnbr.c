@@ -6,7 +6,7 @@
 /*   By: rpontici <rpontici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 13:46:42 by rpontici          #+#    #+#             */
-/*   Updated: 2025/01/15 18:10:44 by rpontici         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:30:54 by rpontici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	ft_putnbr(va_list x)
 	else if (n < 0)
 	{
 		write(1, "-", 1);
+		count += 1;
 		n = -n;
 		ft_putnbr(n);
-		count += 1;
 	}
 	else if (n <= 9)
 	{
