@@ -17,7 +17,7 @@ int ft_printf_ptr(va_list x)
     void    *ptr;
     int count = 0;
 
-    ptr = (void *)va_arg(x, int);
+    ptr = va_arg(x, void *);
     if (!ptr)
     {
         count += ft_putstr("(nil)");
@@ -28,20 +28,27 @@ int ft_printf_ptr(va_list x)
     return count;
 }
 
+int puthex_recursive(unsigned int n, const char *hex)
+{
+    int count = 0;
+
+    
+    if (n >= 16)
+        count += puthex_recursive(n / 16, hex);
+    count += ft_putchar(hex[n % 16]);
+    return (count);
+}
+
 int ft_puthex_dw(va_list x)
 {
-    unsigned int n;
-    char *hex = "0123456789abcdef";
-    int count;
+    unsigned int    n;
+    char            *hex = "0123456789abcdef";
+    int             count;
 
-    n = (unsigned int)va_arg(x, int);
+    n = va_arg(x, unsigned int);
     count = 0;
-    if (n >= 16)
-    {
-        ft_puthex_dw(n / 16);
-        count += 1;
-    }
-    count += ft_putchar(hex[n % 16]);
+    count += puthex_recursive(n, hex);
+
     return (count);
 }
 
@@ -51,13 +58,9 @@ int ft_puthex_up(va_list x)
     char *hex = "0123456789ABCDEF";
     int count;
 
-    n = (unsigned int)va_arg(x, int);
+    n = va_arg(x, unsigned int);
     count = 0;
-    if (n >= 16)
-    {
-        ft_puthex_up(n / 16);
-        count += 1;
-    }
-    count += ft_putchar(hex[n % 16]);
+    count += puthex_recursive(n, hex);
+
     return (count);
 }

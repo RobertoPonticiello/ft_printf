@@ -6,25 +6,25 @@ int    ft_check(char c, va_list x)
 
     count = 0;
     if (c == 'c')
-        count = ft_putchar(x);
-    if (c == 's')
-        count = ft_putstr(x);
-    if (c == 'p')
-        count = ft_puthex(x);
-    if (c == 'd')
+        count = ft_putchar_va(x);
+    else if (c == 's')
+        count = ft_putstr_va(x);
+    else if (c == 'p')
+        count = ft_printf_ptr(x);
+    else if (c == 'd')
         count = ft_putnbr(x);
-    if (c == 'i')
+    else if (c == 'i')
         count = ft_putnbr(x);
-    if (c == 'u')
+    else if (c == 'u')
         count = ft_putnbr_u(x);
-    if (c == 'x')
+    else if (c == 'x')
         count = ft_puthex_dw(x);
-    if (c == 'X')
+    else if (c == 'X')
         count = ft_puthex_up(x);
-    if (c == '%')
+    else if (c == '%')
     {
         count = 1;
-        write(1, '%', 1);
+        write(1, "%", 1);
     }
     return (count);
 }
@@ -48,7 +48,8 @@ int ft_printf(const char *str, ...)
         }
         else
         {
-            count += ft_putchar(str[i]);
+            count += 1;
+            write(1, &str[i], 1);
             i++;
         }
     }
