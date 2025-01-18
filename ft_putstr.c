@@ -35,7 +35,7 @@ int	ft_putstr_va(va_list x)
 	i = 0;
 	s = va_arg(x, char *);
 	if (!s)
-		return(0);
+		return(ft_putstr("(null)"));
 	while (s[i])
 	{
 		write(1, &s[i], 1);

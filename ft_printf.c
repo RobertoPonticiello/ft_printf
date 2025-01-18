@@ -48,11 +48,11 @@ int ft_printf(const char *str, ...)
         }
         else
         {
-            count += 1;
+            count++;
             write(1, &str[i], 1);
             i++;
         }
     }
     va_end(args);
-    return(i);
+    return(count);
 }
