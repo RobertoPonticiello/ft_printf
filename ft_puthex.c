@@ -1,66 +1,73 @@
 #include "ft_printf.h"
 
-int ft_putnbr_hex(unsigned long n)
+int	ft_putnbr_hex(unsigned long n)
 {
-    char *hex = "0123456789abcdef";
-    int count = 0;
+	char	*hex;
+	int		count;
 
-    if (n >= 16) {
-        count += ft_putnbr_hex(n / 16);
-    }
-    count += ft_putchar(hex[n % 16]);
-    return count;
+	hex = "0123456789abcdef";
+	count = 0;
+	if (n >= 16)
+	{
+		count += ft_putnbr_hex(n / 16);
+	}
+	count += ft_putchar(hex[n % 16]);
+	return (count);
 }
 
-int ft_printf_ptr(va_list x)
+int	ft_printf_ptr(va_list x)
 {
-    void    *ptr;
-    int count = 0;
+	void	*ptr;
+	int		count;
 
-    ptr = va_arg(x, void *);
-    if (!ptr)
-    {
-        count += ft_putstr("(nil)");
-    } else {
-        count += ft_putstr("0x");
-        count += ft_putnbr_hex((unsigned long)ptr);
-    }
-    return count;
+	count = 0;
+	ptr = va_arg(x, void *);
+	if (!ptr)
+	{
+		count += ft_putstr("(nil)");
+	}
+	else
+	{
+		count += ft_putstr("0x");
+		count += ft_putnbr_hex((unsigned long)ptr);
+	}
+	return (count);
 }
 
-int puthex_recursive(unsigned int n, const char *hex)
+int	puthex_recursive(unsigned int n, const char *hex)
 {
-    int count = 0;
+	int	count;
 
-    
-    if (n >= 16)
-        count += puthex_recursive(n / 16, hex);
-    count += ft_putchar(hex[n % 16]);
-    return (count);
+	count = 0;
+	if (n >= 16)
+		count += puthex_recursive(n / 16, hex);
+	count += ft_putchar(hex[n % 16]);
+	return (count);
 }
 
-int ft_puthex_dw(va_list x)
+int	ft_puthex_dw(va_list x)
 {
-    unsigned int    n;
-    char            *hex = "0123456789abcdef";
-    int             count;
+	unsigned int	n;
+	char			*hex;
+	int				count;
 
-    n = va_arg(x, unsigned int);
-    count = 0;
-    count += puthex_recursive(n, hex);
+	hex = "0123456789abcdef";
+	n = va_arg(x, unsigned int);
+	count = 0;
+	count += puthex_recursive(n, hex);
 
-    return (count);
+	return (count);
 }
 
 int ft_puthex_up(va_list x)
 {
-    unsigned int n;
-    char *hex = "0123456789ABCDEF";
-    int count;
+	unsigned int n;
+	char *hex = "0123456789ABCDEF";
+	int count;
 
-    n = va_arg(x, unsigned int);
-    count = 0;
-    count += puthex_recursive(n, hex);
+	n = va_arg(x, unsigned int);
+	count = 0;
+	count += puthex_recursive(n, hex);
 
-    return (count);
+	return (count);
 }
