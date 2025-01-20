@@ -43,4 +43,3 @@ int	ft_putnbr(va_list x)
 	}
 	return (ft_print_int_recursive(n));
 }
-

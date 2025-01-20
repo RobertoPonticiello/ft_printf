@@ -55,19 +55,18 @@ int	ft_puthex_dw(va_list x)
 	n = va_arg(x, unsigned int);
 	count = 0;
 	count += puthex_recursive(n, hex);
-
 	return (count);
 }
 
-int ft_puthex_up(va_list x)
+int	ft_puthex_up(va_list x)
 {
-	unsigned int n;
-	char *hex = "0123456789ABCDEF";
-	int count;
+	unsigned int	n;
+	char			*hex;
+	int				count;
 
+	hex = "0123456789ABCDEF";
 	n = va_arg(x, unsigned int);
 	count = 0;
 	count += puthex_recursive(n, hex);
-
 	return (count);
 }
